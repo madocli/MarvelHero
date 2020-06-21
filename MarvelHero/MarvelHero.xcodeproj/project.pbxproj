@@ -14,6 +14,7 @@
 		2A0D994B249FD4DD00CFDAED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D994A249FD4DD00CFDAED /* Assets.xcassets */; };
 		2A0D994E249FD4DD00CFDAED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D994C249FD4DD00CFDAED /* LaunchScreen.storyboard */; };
 		2A0D9959249FD4DE00CFDAED /* MarvelHeroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */; };
+		2A0D9968249FD62200CFDAED /* MarvelHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		2A0D9954249FD4DE00CFDAED /* MarvelHeroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelHeroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroTests.swift; sourceTree = "<group>"; };
 		2A0D995A249FD4DE00CFDAED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +95,19 @@
 		2A0D9957249FD4DE00CFDAED /* MarvelHeroTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D9966249FD58300CFDAED /* Utils */,
 				2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */,
 				2A0D995A249FD4DE00CFDAED /* Info.plist */,
 			);
 			path = MarvelHeroTests;
+			sourceTree = "<group>";
+		};
+		2A0D9966249FD58300CFDAED /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0D9968249FD62200CFDAED /* MarvelHeroData.swift in Sources */,
 				2A0D9959249FD4DE00CFDAED /* MarvelHeroTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
