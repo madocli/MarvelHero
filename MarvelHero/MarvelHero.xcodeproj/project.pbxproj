@@ -16,6 +16,7 @@
 		2A0D9959249FD4DE00CFDAED /* MarvelHeroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */; };
 		2A0D9968249FD62200CFDAED /* MarvelHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */; };
 		2A0D9970249FED0C00CFDAED /* MarvelRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */; };
+		2A0D997524A1311F00CFDAED /* CharacterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997424A1311F00CFDAED /* CharacterResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		2A0D995A249FD4DE00CFDAED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroData.swift; sourceTree = "<group>"; };
 		2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepositoryTest.swift; sourceTree = "<group>"; };
+		2A0D997424A1311F00CFDAED /* CharacterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		2A0D9940249FD4DB00CFDAED /* MarvelHero */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D997124A130DA00CFDAED /* DataSource */,
 				2A0D9941249FD4DB00CFDAED /* AppDelegate.swift */,
 				2A0D9943249FD4DB00CFDAED /* SceneDelegate.swift */,
 				2A0D9945249FD4DB00CFDAED /* ViewController.swift */,
@@ -119,6 +122,30 @@
 				2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		2A0D997124A130DA00CFDAED /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D997224A130E400CFDAED /* RemoteDataSource */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		2A0D997224A130E400CFDAED /* RemoteDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D997324A130F400CFDAED /* Model */,
+			);
+			path = RemoteDataSource;
+			sourceTree = "<group>";
+		};
+		2A0D997324A130F400CFDAED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D997424A1311F00CFDAED /* CharacterResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0D997524A1311F00CFDAED /* CharacterResponseModel.swift in Sources */,
 				2A0D9946249FD4DB00CFDAED /* ViewController.swift in Sources */,
 				2A0D9942249FD4DB00CFDAED /* AppDelegate.swift in Sources */,
 				2A0D9944249FD4DB00CFDAED /* SceneDelegate.swift in Sources */,
