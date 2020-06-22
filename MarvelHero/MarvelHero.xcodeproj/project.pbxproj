@@ -15,6 +15,7 @@
 		2A0D994E249FD4DD00CFDAED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D994C249FD4DD00CFDAED /* LaunchScreen.storyboard */; };
 		2A0D9959249FD4DE00CFDAED /* MarvelHeroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */; };
 		2A0D9968249FD62200CFDAED /* MarvelHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */; };
+		2A0D9970249FED0C00CFDAED /* MarvelRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroTests.swift; sourceTree = "<group>"; };
 		2A0D995A249FD4DE00CFDAED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroData.swift; sourceTree = "<group>"; };
+		2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepositoryTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		2A0D9957249FD4DE00CFDAED /* MarvelHeroTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D996E249FECED00CFDAED /* Data */,
 				2A0D9966249FD58300CFDAED /* Utils */,
 				2A0D9958249FD4DE00CFDAED /* MarvelHeroTests.swift */,
 				2A0D995A249FD4DE00CFDAED /* Info.plist */,
@@ -108,6 +111,14 @@
 				2A0D9967249FD62200CFDAED /* MarvelHeroData.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2A0D996E249FECED00CFDAED /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D996F249FED0C00CFDAED /* MarvelRepositoryTest.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +234,7 @@
 			files = (
 				2A0D9968249FD62200CFDAED /* MarvelHeroData.swift in Sources */,
 				2A0D9959249FD4DE00CFDAED /* MarvelHeroTests.swift in Sources */,
+				2A0D9970249FED0C00CFDAED /* MarvelRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
