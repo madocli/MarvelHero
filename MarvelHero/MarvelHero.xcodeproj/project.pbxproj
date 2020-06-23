@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		2A0D997524A1311F00CFDAED /* CharacterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997424A1311F00CFDAED /* CharacterResponseModel.swift */; };
 		2A0D997724A132B900CFDAED /* MarvelRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997624A132B900CFDAED /* MarvelRemoteDataSource.swift */; };
 		2A0D997924A136F500CFDAED /* HeroErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997824A136F500CFDAED /* HeroErrorModel.swift */; };
+		2A0D997B24A1D73200CFDAED /* MarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997A24A1D73200CFDAED /* MarvelRepository.swift */; };
 		FE60BDAB7CF775455E974E3D /* Pods_MarvelHeroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63D76207C395D3FC42149D9 /* Pods_MarvelHeroTests.framework */; };
 		FF23A7EC3FAB884196B187AB /* Pods_MarvelHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C14ECCB5DAB106B52AF0AF /* Pods_MarvelHero.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		2A0D997424A1311F00CFDAED /* CharacterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseModel.swift; sourceTree = "<group>"; };
 		2A0D997624A132B900CFDAED /* MarvelRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRemoteDataSource.swift; sourceTree = "<group>"; };
 		2A0D997824A136F500CFDAED /* HeroErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroErrorModel.swift; sourceTree = "<group>"; };
+		2A0D997A24A1D73200CFDAED /* MarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepository.swift; sourceTree = "<group>"; };
 		92BF9D60B2E8DCCFD3F0DD55 /* Pods-MarvelHeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelHeroTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelHeroTests/Pods-MarvelHeroTests.release.xcconfig"; sourceTree = "<group>"; };
 		93C14ECCB5DAB106B52AF0AF /* Pods_MarvelHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63D76207C395D3FC42149D9 /* Pods_MarvelHeroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHeroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				2A0D997224A130E400CFDAED /* RemoteDataSource */,
+				2A0D997A24A1D73200CFDAED /* MarvelRepository.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -183,7 +186,6 @@
 				18E295E1062BBE5A0F3B542E /* Pods-MarvelHeroTests.debug.xcconfig */,
 				92BF9D60B2E8DCCFD3F0DD55 /* Pods-MarvelHeroTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -356,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A0D997724A132B900CFDAED /* MarvelRemoteDataSource.swift in Sources */,
+				2A0D997B24A1D73200CFDAED /* MarvelRepository.swift in Sources */,
 				2A0D997524A1311F00CFDAED /* CharacterResponseModel.swift in Sources */,
 				2A0D997924A136F500CFDAED /* HeroErrorModel.swift in Sources */,
 				2A0D9946249FD4DB00CFDAED /* ViewController.swift in Sources */,

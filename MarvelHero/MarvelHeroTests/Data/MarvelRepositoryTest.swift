@@ -40,8 +40,8 @@ class MarvelRepositoryTest: XCTestCase {
         sut.fetchCharacters(offset: 0) { (result) in
             switch result {
             case let .success(t):
-                XCTAssertEqual(3, t.count)
-            case let .failure(_):
+                XCTAssertEqual(3, t.data.results.count)
+            case .failure(_):
                 XCTAssert(false)
             }
         }
@@ -51,7 +51,7 @@ class MarvelRepositoryTest: XCTestCase {
         remoteDataSource.didPetition = false
         sut.fetchCharacters(offset: 0) { (result) in
             switch result {
-            case let .success(t):
+            case .success(_):
                 XCTAssert(false)
             case let .failure(e):
                 XCTAssertEqual("You must provide a hash.", e.message)
@@ -66,11 +66,14 @@ class MarvelRepositoryTest: XCTestCase {
         var didPetition = true
         func getCharacterst(offset: Int, handler: @escaping (Result<CharacterResponseModel, HeroErrorModel>) -> Void) {
             if didPetition {
+                let jsonData = MarvelHeroData.jsonValue
                 do {
-                    let genericResponse = try JSONDecoder().decode(CharacterResponseModel.self, from: MarvelHeroData.jsonCharacters)
+                    let genericResponse = try JSONDecoder().decode(CharacterResponseModel.self, from: jsonData)
                     handler(.success(genericResponse))
                 } catch {
+                    print("ERROROOOOO ")
                     handler(.failure(HeroErrorModel(message: "Error decodding CharacerHeroModel")))
+
                 }
             } else {
                 handler(.failure(HeroErrorModel(message: "You must provide a hash.")))
