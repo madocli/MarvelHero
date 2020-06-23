@@ -19,11 +19,11 @@ struct CharacterResponseModel: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
     let offset, limit, total, count: Int
-    let results: [Result]
+    let results: [CharacterResult]
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct CharacterResult: Codable {
     let id: Int
     let name, resultDescription: String
     let modified: Date

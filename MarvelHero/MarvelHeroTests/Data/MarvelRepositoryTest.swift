@@ -62,18 +62,18 @@ class MarvelRepositoryTest: XCTestCase {
     
     // MARK: - Stubs & Mocks.
     
-    class RemoteDataSourceMock: RemoteDataSource {
+    class RemoteDataSourceMock: MarvelRemoteDataSourceGateway {
         var didPetition = true
-        func getCharacters(offset: Int, handler: @escaping Result<CharacterResponseModel, HeroErrorModel>) {
+        func getCharacterst(offset: Int, handler: @escaping (Result<CharacterResponseModel, HeroErrorModel>) -> Void) {
             if didPetition {
                 do {
-                    let genericResponse = try? JSONDecoder().decode(CharacterResponseModel.self, from: MarvelHeroData.jsonCharacters)
+                    let genericResponse = try JSONDecoder().decode(CharacterResponseModel.self, from: MarvelHeroData.jsonCharacters)
                     handler(.success(genericResponse))
                 } catch {
                     handler(.failure(HeroErrorModel(message: "Error decodding CharacerHeroModel")))
                 }
             } else {
-                handler(.failure(HeroErrorModel(message: "Error!")))
+                handler(.failure(HeroErrorModel(message: "You must provide a hash.")))
             }
         }
     }
