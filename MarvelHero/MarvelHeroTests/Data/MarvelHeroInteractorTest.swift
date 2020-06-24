@@ -9,17 +9,17 @@
 import XCTest
 @testable import MarvelHero
 
-class MarvelRepositoryTest: XCTestCase {
+class MarvelHeroInteractorTest: XCTestCase {
 
     // MARK: - Test variables
 
-    var sut: MarvelRepository!
+    var sut: MarvelHeroInteractor!
     var remoteDataSource: RemoteDataSourceMock!
     
     override func setUp() {
         super.setUp()
         remoteDataSource = RemoteDataSourceMock()
-        sut = MarvelRepository(remoteDataSource: self.remoteDataSource)
+        sut = MarvelHeroInteractor(remoteDataSource: self.remoteDataSource)
     }
     
     
@@ -37,10 +37,10 @@ class MarvelRepositoryTest: XCTestCase {
     
     // MARK: - Get correct DATA
     func test_initializationView_callRemoteDataSource_getsDataFromServiceSuccessfuly() {
-        sut.fetchCharacters(offset: 0) { (result) in
+        sut.getMarvelHeroList(offset: 0) { (result) in
             switch result {
             case let .success(t):
-                XCTAssertEqual(3, t.data.results.count)
+                XCTAssertEqual(3, t.count)
             case .failure(_):
                 XCTAssert(false)
             }
@@ -49,7 +49,7 @@ class MarvelRepositoryTest: XCTestCase {
     
     func test_initializationView_callRemoteDataSource_getsFailure() {
         remoteDataSource.didPetition = false
-        sut.fetchCharacters(offset: 0) { (result) in
+        sut.getMarvelHeroList(offset: 0) { (result) in
             switch result {
             case .success(_):
                 XCTAssert(false)
@@ -71,7 +71,6 @@ class MarvelRepositoryTest: XCTestCase {
                     let genericResponse = try JSONDecoder().decode(CharacterResponseModel.self, from: jsonData)
                     handler(.success(genericResponse))
                 } catch {
-                    print("ERROROOOOO ")
                     handler(.failure(HeroErrorModel(message: "Error decodding CharacerHeroModel")))
 
                 }
