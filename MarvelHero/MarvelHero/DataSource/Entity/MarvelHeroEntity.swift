@@ -16,6 +16,6 @@ struct MarvelHeroEntity {
     init(characterResponse: CharacterResult) {
         self.name = characterResponse.name
         self.description = characterResponse.resultDescription
-        self.completeImageURL = "\(characterResponse.thumbnail?.path ?? "")/portrait_fantastic\(characterResponse.thumbnail?.thumbnailExtension ?? "")"
+        self.completeImageURL = "\(characterResponse.thumbnail?.path ?? "")/portrait_fantastic.\(characterResponse.thumbnail?.thumbnailExtension ?? "")"
     }
 }

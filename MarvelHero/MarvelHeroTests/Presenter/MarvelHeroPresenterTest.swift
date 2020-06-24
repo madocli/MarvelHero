@@ -26,7 +26,7 @@ class MarvelHeroPresenterTest: XCTestCase {
         sut.view = view
     }
     
-    override class func tearDown() {
+    override func tearDown() {
         sut = nil
         interactor = nil
         view = nil
@@ -68,7 +68,7 @@ class MarvelHeroPresenterTest: XCTestCase {
     // MARK: - Fetched Data
     func test_viewReady_fetchData_getNumberOfItems() {
         sut.viewReady()
-        XCTAssertEqual(1, sut.numberOfItems())
+        XCTAssertEqual(1, sut.numberOfItems)
     }
     
     // MARK: - Configure Item View
@@ -90,6 +90,30 @@ class MarvelHeroPresenterTest: XCTestCase {
         XCTAssertEqual(4, interactor.offset)
     }
     
+    func test_viewScrollsToBottom_fetchMoreData_invokesViewShowLoading() {
+        sut.viewReady()
+        interactor.jsonData = MarvelHeroData.multipleCharactersJson
+        let cell = CharacterItemViewInterfaceMock()
+        sut.configure(cell: cell, forRow: 0)
+        XCTAssertEqual(2, view.loadingDataWasInvoked)
+    }
+    
+    func test_viewScrollsToBottom_fetchMoreData_invokesViewRemoveLoading() {
+        sut.viewReady()
+        interactor.jsonData = MarvelHeroData.multipleCharactersJson
+        let cell = CharacterItemViewInterfaceMock()
+        sut.configure(cell: cell, forRow: 0)
+        XCTAssertEqual(2, view.removeLoadingDataWasInvoked)
+    }
+    
+    func test_viewScrollsToBottom_fetchMoreData_invokesReloadView() {
+        sut.viewReady()
+        interactor.jsonData = MarvelHeroData.multipleCharactersJson
+        let cell = CharacterItemViewInterfaceMock()
+        sut.configure(cell: cell, forRow: 0)
+        XCTAssertEqual(2, view.reloadDataWasInvoked)
+    }
+    
     
     // MARK: - Stubs & Mocks.
     
@@ -98,15 +122,15 @@ class MarvelHeroPresenterTest: XCTestCase {
         var getMarvelHeroWasInvoked = 0
         var offset = 0
         var jsonData = MarvelHeroData.singleCharacterJson
-        func getMarvelHeroList(offset: Int, handler: @escaping Result<[MarvelHeroEntity], HeroErrorModel>) {
+        func getMarvelHeroList(offset: Int, handler: @escaping (Result<[MarvelHeroEntity], HeroErrorModel>) -> Void) {
             getMarvelHeroWasInvoked += 1
             self.offset = offset
             if didPetition {
                 do {
-                    let arrayCharacters = try JSONDecoder().decode([CharacterResult.self], from: jsonData)
+                    let arrayCharacters = try JSONDecoder().decode([CharacterResult].self, from: jsonData)
                     var arrayMarvelHeroEntity = [MarvelHeroEntity]()
                     for character in arrayCharacters {
-                        arrayMarvelHeroEntity.append(MarvelHeroEntity(characterResult: character))
+                        arrayMarvelHeroEntity.append(MarvelHeroEntity(characterResponse: character))
                     }
                     handler(.success(arrayMarvelHeroEntity))
                 } catch {
