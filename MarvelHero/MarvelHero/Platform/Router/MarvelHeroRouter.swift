@@ -11,9 +11,9 @@ import UIKit
 class MarvelHeroRouter {
     weak var viewController: UIViewController?
     
-    static func createModule() -> ViewController {
+    static func createModule() -> MarvelHeroViewController {
         // Change to get view from storyboard if not using progammatic UI
-        let view = ViewController.initFromStoryboard()
+        let view = MarvelHeroViewController.initFromStoryboard()
         let interactor = MarvelHeroInteractor(remoteDataSource: MarvelRemoteDataSource())
         let router = MarvelHeroRouter()
         let presenter = MarvelHeroPresenter(interactor: interactor)
