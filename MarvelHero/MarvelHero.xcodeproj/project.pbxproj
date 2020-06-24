@@ -21,6 +21,8 @@
 		2A0D997924A136F500CFDAED /* HeroErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997824A136F500CFDAED /* HeroErrorModel.swift */; };
 		2A0D997B24A1D73200CFDAED /* MarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997A24A1D73200CFDAED /* MarvelRepository.swift */; };
 		2A0D997F24A2706900CFDAED /* MarvelHeroPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D997E24A2706900CFDAED /* MarvelHeroPresenterTest.swift */; };
+		2A0D998224A3C47300CFDAED /* MarvelHeroViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D998124A3C47300CFDAED /* MarvelHeroViewInterface.swift */; };
+		2A0D998424A3C4A400CFDAED /* CharacterItemViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D998324A3C4A400CFDAED /* CharacterItemViewInterface.swift */; };
 		FE60BDAB7CF775455E974E3D /* Pods_MarvelHeroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63D76207C395D3FC42149D9 /* Pods_MarvelHeroTests.framework */; };
 		FF23A7EC3FAB884196B187AB /* Pods_MarvelHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C14ECCB5DAB106B52AF0AF /* Pods_MarvelHero.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		2A0D997824A136F500CFDAED /* HeroErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroErrorModel.swift; sourceTree = "<group>"; };
 		2A0D997A24A1D73200CFDAED /* MarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepository.swift; sourceTree = "<group>"; };
 		2A0D997E24A2706900CFDAED /* MarvelHeroPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroPresenterTest.swift; sourceTree = "<group>"; };
+		2A0D998124A3C47300CFDAED /* MarvelHeroViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHeroViewInterface.swift; sourceTree = "<group>"; };
+		2A0D998324A3C4A400CFDAED /* CharacterItemViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewInterface.swift; sourceTree = "<group>"; };
 		92BF9D60B2E8DCCFD3F0DD55 /* Pods-MarvelHeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelHeroTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelHeroTests/Pods-MarvelHeroTests.release.xcconfig"; sourceTree = "<group>"; };
 		93C14ECCB5DAB106B52AF0AF /* Pods_MarvelHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63D76207C395D3FC42149D9 /* Pods_MarvelHeroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHeroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +109,7 @@
 		2A0D9940249FD4DB00CFDAED /* MarvelHero */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D998024A3C45500CFDAED /* Presentation */,
 				2A0D997124A130DA00CFDAED /* DataSource */,
 				2A0D9941249FD4DB00CFDAED /* AppDelegate.swift */,
 				2A0D9943249FD4DB00CFDAED /* SceneDelegate.swift */,
@@ -178,6 +183,15 @@
 				2A0D997E24A2706900CFDAED /* MarvelHeroPresenterTest.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2A0D998024A3C45500CFDAED /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D998124A3C47300CFDAED /* MarvelHeroViewInterface.swift */,
+				2A0D998324A3C4A400CFDAED /* CharacterItemViewInterface.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		53A35F52BD5320E486E59A2E /* Frameworks */ = {
@@ -369,11 +383,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A0D997724A132B900CFDAED /* MarvelRemoteDataSource.swift in Sources */,
+				2A0D998224A3C47300CFDAED /* MarvelHeroViewInterface.swift in Sources */,
 				2A0D997B24A1D73200CFDAED /* MarvelRepository.swift in Sources */,
 				2A0D997524A1311F00CFDAED /* CharacterResponseModel.swift in Sources */,
 				2A0D997924A136F500CFDAED /* HeroErrorModel.swift in Sources */,
 				2A0D9946249FD4DB00CFDAED /* ViewController.swift in Sources */,
 				2A0D9942249FD4DB00CFDAED /* AppDelegate.swift in Sources */,
+				2A0D998424A3C4A400CFDAED /* CharacterItemViewInterface.swift in Sources */,
 				2A0D9944249FD4DB00CFDAED /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
