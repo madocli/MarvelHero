@@ -72,7 +72,7 @@ class MarvelHeroPresenter {
             let hero = arrayHeros[itemPosition]
             cell.set(name: hero.name ?? "")
             cell.set(description: hero.description ?? "")
-            cell.set(imageUrl: hero.completeImageURL ?? "")
+            cell.set(imageUrl: hero.completeImageURL ?? "", imageExtension: hero.imageExtension ?? "")
             
             isLastItem(row: row)
         }

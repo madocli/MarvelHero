@@ -11,7 +11,7 @@ import XCTest
 
 class MarvelHeroPresenterTest: XCTestCase {
     // TODO: ******
-    let imageSizeFormat = "/portrait_fantastic"
+    let imageSizeFormat = "/portrait_uncanny"
     // MARK: - Test Variables.
     var sut: MarvelHeroPresenter!
     var interactor: MarvelHeroGatewayMock!
@@ -78,7 +78,7 @@ class MarvelHeroPresenterTest: XCTestCase {
         sut.configure(cell: cell, forRow: 0)
         XCTAssertEqual("Aegis (Trey Rollins)", cell.setedName)
         XCTAssertEqual("Some description from Aegis", cell.setedDescription)
-        XCTAssertEqual("http://i.annihil.us/u/prod/marvel/i/mg/5/e0/4c0035c9c425d/portrait_fantastic.gif", cell.setedImageURL)
+        XCTAssertEqual("http://i.annihil.us/u/prod/marvel/i/mg/5/e0/4c0035c9c425d/portrait_uncanny.gif", cell.setedImageURL)
     }
     
     // MARK: - Fetch more data
@@ -170,7 +170,7 @@ class MarvelHeroPresenterTest: XCTestCase {
         var setedName = ""
         var setedDescription = ""
         
-        func set(imageUrl: String) {
+        func set(imageUrl: String, imageExtension: String) {
             setedImageURL = imageUrl
         }
         

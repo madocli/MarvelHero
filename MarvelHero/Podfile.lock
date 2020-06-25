@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.2.1)
+  - SwiftyGif (5.3.0)
 
 DEPENDENCIES:
   - Alamofire
+  - SwiftyGif
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - SwiftyGif
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
 
-PODFILE CHECKSUM: 2f00e422e46af1c56f9cdd0053c6fa0aba3151ac
+PODFILE CHECKSUM: d64e9ffc5029c1f2ed2939d0d117378e8c55a4a1
 
 COCOAPODS: 1.9.3

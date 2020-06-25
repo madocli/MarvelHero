@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CharacterItemViewInterface: class {
-    func set(imageUrl: String)
+    func set(imageUrl: String, imageExtension: String)
     func set(name: String)
     func set(description: String)
 }
