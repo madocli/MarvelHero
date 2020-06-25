@@ -13,11 +13,14 @@ struct MarvelHeroEntity {
     let description: String?
     let completeImageURL: String?
     let imageExtension: String?
+    let detailURL: String?
     
     init(characterResponse: CharacterResult) {
         self.name = characterResponse.name
         self.description = characterResponse.resultDescription
         self.completeImageURL = "\(characterResponse.thumbnail?.path ?? "")/portrait_uncanny.\(characterResponse.thumbnail?.thumbnailExtension ?? "")"
         self.imageExtension = characterResponse.thumbnail?.thumbnailExtension
+        let keyValue = characterResponse.urls?.first(where: { $0.type == "wiki" } )
+        self.detailURL = keyValue?.url
     }
 }

@@ -71,6 +71,10 @@ extension MarvelHeroViewController: MarvelHeroViewInterface {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func navigateToDetailView(url: String, name: String) {
+        self.navigationController?.pushViewController(WebViewController(loadURL: url, name: name), animated: true)
+    }
 }
 
 extension MarvelHeroViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -82,6 +86,10 @@ extension MarvelHeroViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.ID, for: indexPath) as! CharacterCollectionViewCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.selected(row: indexPath.row)
     }
 }
 

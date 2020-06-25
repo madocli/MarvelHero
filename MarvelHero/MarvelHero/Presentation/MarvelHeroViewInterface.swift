@@ -13,4 +13,5 @@ protocol MarvelHeroViewInterface: class {
     func removeLoadingData()
     func reloadData()
     func show(error: String)
+    func navigateToDetailView(url: String, name: String)
 }

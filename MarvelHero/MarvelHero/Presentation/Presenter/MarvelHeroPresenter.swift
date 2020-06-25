@@ -77,4 +77,13 @@ class MarvelHeroPresenter {
             isLastItem(row: row)
         }
     }
+    
+    func selected(row: Int) {
+        if row < arrayHeros.count {
+            let hero = arrayHeros[row]
+            if let url = hero.detailURL {
+                view?.navigateToDetailView(url: url, name: hero.name ?? "Detalle")
+            }
+        }
+    }
 }
