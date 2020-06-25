@@ -15,6 +15,8 @@ protocol MarvelRemoteDataSourceGateway {
 }
 
 class MarvelRemoteDataSource {
+    let baseURL = "https://gateway.marvel.com:443/v1/public/"
+    
     func getParams() -> [String: Any] {
         var parameters = [String: Any]()
         parameters["ts"] = "1592611200"
@@ -22,7 +24,7 @@ class MarvelRemoteDataSource {
     }
     
     func executeCodableRequest<T: Codable>(url: String, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?, result: @escaping (Swift.Result<T, HeroErrorModel>) -> Void) {
-        let request = AF.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseDecodable(of: T.self) { (dataResponse) in
+        let request = AF.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers).validate().responseDecodable(of: T.self) { (dataResponse) in
             if let error = dataResponse.error {
                 result(.failure(HeroErrorModel(message: error.localizedDescription)))
             }
@@ -37,6 +39,6 @@ extension MarvelRemoteDataSource: MarvelRemoteDataSourceGateway {
     func getCharacterst(offset: Int, handler: @escaping (Result<CharacterResponseModel, HeroErrorModel>) -> Void) {
         var parameters = getParams()
         parameters["offset"] = offset
-        executeCodableRequest(url: "", method: .get, parameters: parameters, headers: nil, result: handler)
+        executeCodableRequest(url: "\(baseURL)characters", method: .get, parameters: parameters, headers: nil, result: handler)
     }
 }
