@@ -21,7 +21,8 @@ class MarvelHeroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Marvel Hero"
+        presenter?.viewReady()
         configureCollectionView()
         configureSpinnerSize()
     }
@@ -29,7 +30,9 @@ class MarvelHeroViewController: UIViewController {
     func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        // TODO: Configure collection cell
+        collectionView.backgroundColor = .lightGray
+        let nibCell = UINib(nibName: CharacterCollectionViewCell.ID, bundle: nil)
+        collectionView.register(nibCell, forCellWithReuseIdentifier: CharacterCollectionViewCell.ID)
     }
     
     class func initFromStoryboard() -> MarvelHeroViewController {
@@ -76,7 +79,16 @@ extension MarvelHeroViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // TODO: Get collection view cell and configure with data
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.ID, for: indexPath) as! CharacterCollectionViewCell
+        presenter?.configure(cell: cell, forRow: indexPath.row)
+        return cell
+    }
+}
+
+//MARK: CollectionView - FlowLayout
+extension MarvelHeroViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (collectionView.bounds.width - 15)
+        return CGSize(width: size, height: 500)
     }
 }
