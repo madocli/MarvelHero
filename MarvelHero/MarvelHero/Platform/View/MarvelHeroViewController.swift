@@ -12,7 +12,6 @@ class MarvelHeroViewController: UIViewController {
     static let ID = "MarvelHeroViewController"
 
     var presenter: MarvelHeroPresenter?
-    var router: MarvelHeroRouter?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -70,10 +69,6 @@ extension MarvelHeroViewController: MarvelHeroViewInterface {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func navigateToDetailView(url: String, name: String) {
-        self.navigationController?.pushViewController(WebViewController(loadURL: url, name: name), animated: true)
     }
 }
 

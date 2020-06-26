@@ -16,20 +16,22 @@ class MarvelHeroPresenterTest: XCTestCase {
     var sut: MarvelHeroPresenter!
     var interactor: MarvelHeroGatewayMock!
     var view: MarvelHeroViewInterfaceMock!
+    var router: MarvelHeroRouterMock!
     
     // MARK: - Set up and tear down.
     override func setUp() {
         super.setUp()
         interactor = MarvelHeroGatewayMock()
         view = MarvelHeroViewInterfaceMock()
-        sut = MarvelHeroPresenter(interactor: interactor)
-        sut.view = view
+        router = MarvelHeroRouterMock()
+        sut = MarvelHeroPresenter(view: view, interactor: interactor, router: router)
     }
     
     override func tearDown() {
         sut = nil
         interactor = nil
         view = nil
+        router = nil
         super.tearDown()
     }
     
@@ -114,6 +116,33 @@ class MarvelHeroPresenterTest: XCTestCase {
         XCTAssertEqual(2, view.reloadDataWasInvoked)
     }
     
+    // MARK: - Selected item at
+    func test_userSelectsItem_invokesToNavigate() {
+        interactor.jsonData = MarvelHeroData.multipleCharactersJson
+        sut.viewReady()
+        sut.selected(row: 2)
+        XCTAssertEqual(1, router.navigateToDetailWasInvoked)
+    }
+    
+    func test_userSelectsItem_invokesShowErrors() {
+        interactor.jsonData = MarvelHeroData.multipleCharactersJson
+        sut.viewReady()
+        sut.selected(row: 1)
+        XCTAssertEqual("This Hero has no wiki details", view.errorShowed)
+    }
+    
+    func test_userSelectsItem_invokesToNavigateWithNameAndUrl() {
+        sut.viewReady()
+        sut.selected(row: 0)
+        XCTAssertEqual("Aegis (Trey Rollins)", router.setedName)
+        XCTAssertEqual("http://marvel.com/universe/Aegis_%28Trey_Rollins%29?utm_campaign=apiRef&utm_source=e320a3aac9434b8366a3334560055c48", router.setedURL)
+    }
+    
+    func test_userSelectsItem_outOfRange_doNotInvokesToNavigate() {
+        sut.viewReady()
+        sut.selected(row: 1)
+        XCTAssertEqual(0, router.navigateToDetailWasInvoked)
+    }
     
     // MARK: - Stubs & Mocks.
     
@@ -180,6 +209,17 @@ class MarvelHeroPresenterTest: XCTestCase {
         
         func set(description: String) {
             setedDescription = description
+        }
+    }
+    
+    class MarvelHeroRouterMock: MarvelHeroWireframeProtocol {
+        var setedURL = ""
+        var setedName = ""
+        var navigateToDetailWasInvoked = 0
+        func navigateToDetailView(url: String, name: String) {
+            navigateToDetailWasInvoked += 1
+            setedURL = url
+            setedName = name
         }
     }
 }

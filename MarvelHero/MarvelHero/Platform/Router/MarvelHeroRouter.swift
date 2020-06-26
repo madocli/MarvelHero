@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MarvelHeroRouter {
+protocol MarvelHeroWireframeProtocol: class {
+    func navigateToDetailView(url: String, name: String)
+}
+
+class MarvelHeroRouter: MarvelHeroWireframeProtocol {
     weak var viewController: UIViewController?
     
     static func createModule() -> MarvelHeroViewController {
@@ -16,13 +20,16 @@ class MarvelHeroRouter {
         let view = MarvelHeroViewController.initFromStoryboard()
         let interactor = MarvelHeroInteractor(remoteDataSource: MarvelRemoteDataSource())
         let router = MarvelHeroRouter()
-        let presenter = MarvelHeroPresenter(interactor: interactor)
-        presenter.view = view
+        let presenter = MarvelHeroPresenter(view: view, interactor: interactor, router: router)
         view.presenter = presenter
-        view.router = router
         router.viewController = view
         
         return view
     }
     
+    
+    
+    func navigateToDetailView(url: String, name: String) {
+        self.viewController?.navigationController?.pushViewController(WebViewController(loadURL: url, name: name), animated: true)
+    }
 }

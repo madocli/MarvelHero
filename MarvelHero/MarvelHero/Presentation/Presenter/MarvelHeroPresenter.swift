@@ -11,9 +11,10 @@ import Foundation
 class MarvelHeroPresenter {
     
     // MARK: - Properties
-    private let interactor: MarvelHeroGateway
     weak var view: MarvelHeroViewInterface?
-    
+    var interactor: MarvelHeroGateway?
+    private let router: MarvelHeroWireframeProtocol
+
     // MARK: - DATA
     private var arrayHeros = [MarvelHeroEntity]()
     var numberOfItems: Int {
@@ -24,8 +25,10 @@ class MarvelHeroPresenter {
     var isAtBottom = false
     
     // MARK: - Initialization
-    init(interactor: MarvelHeroGateway) {
+    init(view: MarvelHeroViewInterface, interactor: MarvelHeroGateway, router: MarvelHeroWireframeProtocol) {
+        self.view = view
         self.interactor = interactor
+        self.router = router
     }
     
     func viewReady() {
@@ -34,7 +37,7 @@ class MarvelHeroPresenter {
     }
     
     private func fetchHeros() {
-        interactor.getMarvelHeroList(offset: arrayHeros.count) { [weak self] (result) in
+        interactor?.getMarvelHeroList(offset: arrayHeros.count) { [weak self] (result) in
             self?.view?.removeLoadingData()
             switch result {
             case let .success(t):
@@ -82,7 +85,9 @@ class MarvelHeroPresenter {
         if row < arrayHeros.count {
             let hero = arrayHeros[row]
             if let url = hero.detailURL {
-                view?.navigateToDetailView(url: url, name: hero.name ?? "Detalle")
+                router.navigateToDetailView(url: url, name: hero.name ?? "Wiki")
+            } else {
+                view?.show(error: "This Hero has no wiki details")
             }
         }
     }
