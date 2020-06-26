@@ -20,10 +20,14 @@ class MarvelHeroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Marvel Hero"
         presenter?.viewReady()
         configureCollectionView()
         configureSpinnerSize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Marvel Hero"
     }
     
     func configureCollectionView() {

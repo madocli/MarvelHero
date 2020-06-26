@@ -30,6 +30,11 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.backItem?.title = ""
+        }
+        configureView()
+        webView.navigationDelegate = self
         self.navigationItem.title = name
         if let loadURL = URL(string: stringURL) {
             webView.isHidden = false
@@ -50,7 +55,7 @@ class WebViewController: UIViewController {
         spinner.style = .large
         spinner.color = .gray
         DispatchQueue.main.async {
-            self.webView.addSubview(self.spinner)
+            self.view.addSubview(self.spinner)
         }
     }
     
