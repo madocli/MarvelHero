@@ -17,7 +17,7 @@ class MarvelHeroInteractor {
 }
 
 extension MarvelHeroInteractor: MarvelHeroGateway {
-    func getMarvelHeroList(offset: Int, handler: @escaping (Result<[MarvelHeroEntity], HeroErrorModel>) -> Void) {
+    func getMarvelHeroList(offset: Int, handler: @escaping (Result<([MarvelHeroEntity], Int), HeroErrorModel>) -> Void) {
         remoteDataSource.getCharacterst(offset: offset) { (result) in
             switch result {
             case let .success(t):
@@ -25,7 +25,8 @@ extension MarvelHeroInteractor: MarvelHeroGateway {
                 for element in t.data.results {
                     arrayCharacters.append(MarvelHeroEntity(characterResponse: element))
                 }
-                handler(.success(arrayCharacters))
+                let total = Int(t.data.total)
+                handler(.success((arrayCharacters, total)))
             case let .failure(e):
                 handler(.failure(e))
             }

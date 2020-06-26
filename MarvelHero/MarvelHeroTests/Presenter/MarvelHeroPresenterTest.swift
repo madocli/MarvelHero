@@ -10,8 +10,6 @@ import XCTest
 @testable import MarvelHero
 
 class MarvelHeroPresenterTest: XCTestCase {
-    // TODO: ******
-    let imageSizeFormat = "/portrait_uncanny"
     // MARK: - Test Variables.
     var sut: MarvelHeroPresenter!
     var interactor: MarvelHeroGatewayMock!
@@ -116,6 +114,14 @@ class MarvelHeroPresenterTest: XCTestCase {
         XCTAssertEqual(2, view.reloadDataWasInvoked)
     }
     
+    func test_viewScrollsToBottom_fetchMoreData_doNotInvokesReloadView() {
+        interactor.totalElements = 1
+        sut.viewReady()
+        let cell = CharacterItemViewInterfaceMock()
+        sut.configure(cell: cell, forRow: 0)
+        XCTAssertEqual(1, interactor.getMarvelHeroWasInvoked)
+    }
+    
     // MARK: - Selected item at
     func test_userSelectsItem_invokesToNavigate() {
         interactor.jsonData = MarvelHeroData.multipleCharactersJson
@@ -150,8 +156,10 @@ class MarvelHeroPresenterTest: XCTestCase {
         var didPetition = true
         var getMarvelHeroWasInvoked = 0
         var offset = 0
+        var totalElements = 10
         var jsonData = MarvelHeroData.singleCharacterJson
-        func getMarvelHeroList(offset: Int, handler: @escaping (Result<[MarvelHeroEntity], HeroErrorModel>) -> Void) {
+        
+        func getMarvelHeroList(offset: Int, handler: @escaping (Result<([MarvelHeroEntity], Int), HeroErrorModel>) -> Void) {
             getMarvelHeroWasInvoked += 1
             self.offset = offset
             if didPetition {
@@ -161,7 +169,7 @@ class MarvelHeroPresenterTest: XCTestCase {
                     for character in arrayCharacters {
                         arrayMarvelHeroEntity.append(MarvelHeroEntity(characterResponse: character))
                     }
-                    handler(.success(arrayMarvelHeroEntity))
+                    handler(.success((arrayMarvelHeroEntity, totalElements)))
                 } catch {
                     handler(.failure(HeroErrorModel(message: "Error decodding CharacerResult")))
                 }

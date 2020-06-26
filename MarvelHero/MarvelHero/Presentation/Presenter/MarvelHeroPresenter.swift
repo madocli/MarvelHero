@@ -17,6 +17,7 @@ class MarvelHeroPresenter {
 
     // MARK: - DATA
     private var arrayHeros = [MarvelHeroEntity]()
+    private var totalElements: Int?
     var numberOfItems: Int {
         return arrayHeros.count
     }
@@ -33,20 +34,29 @@ class MarvelHeroPresenter {
     
     func viewReady() {
         view?.loadingData()
-        fetchHeros()
+        fetchHeros(offset: 0)
     }
     
-    private func fetchHeros() {
-        interactor?.getMarvelHeroList(offset: arrayHeros.count) { [weak self] (result) in
+    private func fetchHeros(offset: Int) {
+        interactor?.getMarvelHeroList(offset: offset) { [weak self] (result) in
             self?.view?.removeLoadingData()
             switch result {
             case let .success(t):
-                for element in t {
+                for element in t.0 {
                     self?.arrayHeros.append(element)
                 }
+                self?.totalElements = t.1
                 self?.view?.reloadData()
             case let .failure(e):
                 self?.view?.show(error: e.message ?? "Something went wrong fetching data.")
+            }
+        }
+    }
+    
+    private func fetchMoreHeros() {
+        if let total = totalElements {
+            if arrayHeros.count < total {
+                fetchHeros(offset: arrayHeros.count)
             }
         }
     }
@@ -64,7 +74,7 @@ class MarvelHeroPresenter {
         if row == arrayHeros.count - 1 {
             lastItemShown = row
             self.view?.loadingData()
-            self.fetchHeros()
+            self.fetchMoreHeros()
         }
     }
     

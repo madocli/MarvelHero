@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MarvelHeroGateway {
-    func getMarvelHeroList(offset: Int, handler: @escaping (Result<[MarvelHeroEntity], HeroErrorModel>) -> Void)
+    func getMarvelHeroList(offset: Int, handler: @escaping (Result<([MarvelHeroEntity], Int), HeroErrorModel>) -> Void)
 }

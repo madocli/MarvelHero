@@ -40,7 +40,8 @@ class MarvelHeroInteractorTest: XCTestCase {
         sut.getMarvelHeroList(offset: 0) { (result) in
             switch result {
             case let .success(t):
-                XCTAssertEqual(3, t.count)
+                XCTAssertEqual(3, (t.0).count)
+                XCTAssertEqual(1493, t.1)
             case .failure(_):
                 XCTAssert(false)
             }
